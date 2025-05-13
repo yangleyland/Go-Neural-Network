@@ -42,6 +42,7 @@ func mnistTrain(net *perceptron.Network) {
 	t1 := time.Now()
 
 	for epochs := 0; epochs < 5; epochs++ {
+		fmt.Println("Epoch %d", epochs)
 		testFile, _ := os.Open("mnist_dataset/mnist_train.csv")
 		r := csv.NewReader(bufio.NewReader(testFile))
 		for {
@@ -113,6 +114,7 @@ func mnistPredict(net *perceptron.Network) {
 
 func save(net perceptron.Network) {
 	h, err := os.Create("data/hweights.model")
+	fmt.Println("save", err)
 	defer h.Close()
 	if err == nil {
 		net.HiddenWeights.MarshalBinaryTo(h)
