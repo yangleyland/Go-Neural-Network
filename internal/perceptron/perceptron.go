@@ -1,6 +1,7 @@
 package perceptron
 
 import (
+	"fmt"
 	"math"
 
 	"gonum.org/v1/gonum/mat"
@@ -132,6 +133,12 @@ func subtract(m, n mat.Matrix) mat.Matrix {
 	o := mat.NewDense(r, c, nil)
 	o.Sub(m, n)
 	return o
+}
+
+// pretty print a Gonum matrix
+func MatrixPrint(X mat.Matrix) {
+	fa := mat.Formatted(X, mat.Prefix(""), mat.Squeeze())
+	fmt.Printf("%v\n", fa)
 }
 
 func addScalar(i float64, m mat.Matrix) mat.Matrix {
